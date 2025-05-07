@@ -1,0 +1,28 @@
+.brdr {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #cccbcb;
+  border-radius: 50%;
+}
+.divider {
+  position: relative;
+}
+.divider::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: calc(50% + 34px);
+  right: -48px;
+  top: 50%;
+  background-color: #cccbcb;
+}
+.divider::before {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: calc(50% + 34px);
+  left: -48px;
+  top: 50%;
+
+  background-color: #cccbcb;
+}

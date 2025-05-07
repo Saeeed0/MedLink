@@ -102,7 +102,9 @@ function SignUp() {
   });
   return (
     <>
-      <form onSubmit={formik.handleSubmit} className="w-50  form-shadow rounded-4 p-5 m-auto mt-5">
+    <div className="">
+      <div className=" bg-primary w-50 mt-5 m-auto text-center rounded-top-4 p-1 text-light">Sign Up</div>
+      <form onSubmit={formik.handleSubmit} className="w-50  form-shadow rounded-bottom-4 p-5 m-auto ">
         {error && (
           <div className="alert  alert-danger" role="alert">
             {error.response?.data?.detail ||
@@ -272,6 +274,7 @@ function SignUp() {
           </div>
         </div>
       </form>
+    </div>
     </>
   );
 }
