@@ -23,7 +23,7 @@ function Navbar() {
   const { logout, userToken } = useContext(userContext);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-primary">
+    <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-primary">
       <div className="container ">
         <Link className="navbar-brand text-light" to="/">
           MedLink

@@ -1,0 +1,15 @@
+.activeSelection  {
+    position: relative;
+    color: #0d6efd;
+    
+  }
+  .activeSelection::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: blue;
+    left: 0;
+    bottom: 0;
+  }
+  
