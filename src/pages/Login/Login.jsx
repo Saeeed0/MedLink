@@ -5,14 +5,15 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Required } from "../../components/Required/Required";
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { BallTriangle } from "react-loader-spinner";
+import { userContext } from "../../context/UserContect/UserContext";
 function Login() {
   let [isLoading, setIsLoading] = useState(false);
   let [error, setError] = useState(null);
-  let [userToken, setUserToken] = useState(null);
   let [isChecked, setIsChecked] = useState(false);
 
+  const { setUserToken } = useContext(userContext);
   const navigate = useNavigate();
 
   const validationSchema = Yup.object({
