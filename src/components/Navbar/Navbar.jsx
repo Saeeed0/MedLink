@@ -5,7 +5,8 @@ import Kenya from "../../assets/images/flages/Kenya.jpg";
 import Lebanon from "../../assets/images/flages/Lebanon.jpg";
 import Nigeria from "../../assets/images/flages/Nigeria.jpg";
 import Saudi from "../../assets/images/flages/Saudi.jpg";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { userContext } from "../../context/UserContect/UserContext";
 function Navbar() {
   let [lang, setLang] = useState(true);
   const countries = [
@@ -16,7 +17,11 @@ function Navbar() {
     { name: "Nigeria", img: Nigeria },
     { name: "Saudi", img: Saudi },
   ];
+
   let [selectedCountry, setSelectedCountry] = useState(countries[0]);
+
+  const { logout, userToken } = useContext(userContext);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-primary">
       <div className="container ">
@@ -36,16 +41,55 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="collapsibleNavId">
           <ul className="navbar-nav ms-auto mt-2 mt-lg-0">
-            <li className="nav-item">
-              <Link className="nav-link  text-light" to="/SignUp">
-                Sign Up
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link text-light" to="/Login">
-                Login
-              </Link>
-            </li>
+            {userToken ? (
+              <li className="nav-item dropdown">
+                <span
+                  className="nav-link text-light dropdown-toggle"
+                  id="navbarDarkDropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                >
+                  Settings
+                </span>
+                <ul
+                  className="dropdown-menu  "
+                  aria-labelledby="navbarDarkDropdownMenuLink"
+                >
+                  <li>
+                    <a className="dropdown-item text-primary">My Profile</a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item text-primary">
+                      My Appointments
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item text-primary">My Insurance</a>
+                  </li>
+                  <li>
+                    <span
+                      onClick={() => logout()}
+                      className="dropdown-item text-primary"
+                    >
+                      Logout
+                    </span>
+                  </li>
+                </ul>
+              </li>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link  text-light" to="/SignUp">
+                    Sign Up
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link text-light" to="/Login">
+                    Login
+                  </Link>
+                </li>
+              </>
+            )}
+
             <li className="nav-item">
               <Link className="nav-link text-light" to="/">
                 MedLink For Doctors
